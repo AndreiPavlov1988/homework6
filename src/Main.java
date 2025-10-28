@@ -50,7 +50,7 @@ public class Main {
                 maxDays1 = day;
                 continue;
             }
-            remainingBudget1 -= dailyCost;
+            remainingBudget1 -= dailyCost1;
             maxDays1 = day;
             System.out.println("День " + day + ":  Оплачено 100 ₽ (осталось: " + remainingBudget1 + " ₽)");
         }
