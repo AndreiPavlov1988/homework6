@@ -85,5 +85,29 @@ public class Main {
                 break; // завершение цикла при достижении цели
             }
         }
+//task 5
+        int charge = 20;
+        int minute = 0;
+        int overheats = 0;
+        final int MAX_OVERHEATS = 3;
+        final int TARGET_CHARGE = 100;
+        while (charge < TARGET_CHARGE && overheats <= MAX_OVERHEATS) {
+            minute++;
+            if (minute % 10 == 0 && overheats < MAX_OVERHEATS) {
+                overheats++;
+                System.out.printf("  Минута %d: ПЕРЕГРЕВ! (%d/3) - пауза 2 минуты%n",
+                        minute, overheats);
+                minute += 2;
+                System.out.printf("    Минута %d:  Пауза (зарядка пропущена)%n", minute - 1);
+                System.out.printf("    Минута %d:  Пауза (зарядка пропущена)%n", minute);
+                continue;
+            }
+            charge += 2;
+            System.out.printf("Минута %d: +2%% | Текущий заряд: %d%%%n", minute, charge);
+            if (overheats >= MAX_OVERHEATS) {
+                System.out.println("\n ПРЕВЫШЕН ЛИМИТ ПЕРЕГРЕВОВ!");
+                break;
+            }
+        }
     }
 }
