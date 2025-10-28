@@ -3,7 +3,7 @@ public class Main {
 //task 1
         int firstFriday = 1;
         for (int i = 0; i <= 31; i++) {
-            if ((i-firstFriday) % 7 == 0) {
+            if ((i - firstFriday) % 7 == 0) {
                 System.out.println("Сегодня пятница, " + i + "-е число. Необходимо подготовить отчет");
             }
         }
@@ -11,15 +11,16 @@ public class Main {
         int distance = 0;
         int marafonDistance = 42195;
         int interval = 500;
-        do {int remainingDistance = marafonDistance - distance;
+        do {
+            int remainingDistance = marafonDistance - distance;
             System.out.println("Держитесь! Осталось " + remainingDistance + " метров");
             distance += interval;
         } while (distance <= marafonDistance);
-    int marafonDistance1 = 42195;
-    int interval1 = 500;
+        int marafonDistance1 = 42195;
+        int interval1 = 500;
         for (int distance1 = 0; distance1 <= marafonDistance1; distance1 += interval1) {
             int remainingDistance = marafonDistance1 - distance1;
-        System.out.println("Держитесь! Осталось " + remainingDistance + " метров");
+            System.out.println("Держитесь! Осталось " + remainingDistance + " метров");
         }
 //task 3
         int budget = 1000;
@@ -57,6 +58,32 @@ public class Main {
         System.out.println("\n ИТОГ:");
         System.out.println("На " + budget1 + " ₽ можно оставить автомобиль на " + maxDays1 + " дней");
         System.out.println("Оставшийся бюджет: " + remainingBudget1 + " ₽");
+//task 4
+        int month = 0;
+        double total = 0.0;
+        double MONTHLY_CONTRIBUTION = 15000.0;
+        double TARGET_AMOUNT = 12000000.0;
+        double INTEREST_RATE = 0.07;
+        while (true) {
+            month++;
+            total += MONTHLY_CONTRIBUTION;
+            if (month % 6 == 0) {
+                double interest = total * INTEREST_RATE;
+                total += interest;
+                System.out.printf("Месяц %3d: %,.2f ₽ + проценты %,.2f ₽ = %,.2f ₽%n",
+                        month, total - interest, interest, total);
+            } else {
+                System.out.printf("Месяц %3d: %,.2f ₽%n", month, total);
+            }
+            if (total >= TARGET_AMOUNT) {
+                System.out.println("\n" + "=".repeat(50));
+                System.out.println("ЦЕЛЬ ДОСТИГНУТА!");
+                System.out.printf("Для накопления %,.2f ₽ потребовалось: %d месяцев%n",
+                        TARGET_AMOUNT, month);
+                System.out.printf("Итоговая сумма: %,.2f ₽%n", total);
+                System.out.printf("Перевыполнение плана: %,.2f ₽%n", total - TARGET_AMOUNT);
+                break; // завершение цикла при достижении цели
+            }
+        }
     }
 }
-
